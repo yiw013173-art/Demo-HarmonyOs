@@ -1,0 +1,16 @@
+{
+  "name": "demo-harmonyos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@ohos/hvigor": "^6.21.0",
+    "@ohos/hvigor-ohos-plugin": "^6.21.0"
+  }
+}

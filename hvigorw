@@ -14,14 +14,31 @@ if [ -f "node_modules/.bin/hvigor" ]; then
 elif command -v hvigor &> /dev/null; then
     # 使用全局 hvigor 命令
     exec hvigor "$@"
-elif command -v npx &> /dev/null; then
-    # 使用 npx 运行 hvigor
-    exec npx @ohos/hvigor-ohos-plugin "$@"
+elif [ -d "$HOME/Library/OpenHarmony/Sdk" ]; then
+    # 尝试使用 OpenHarmony SDK 中的 hvigor
+    HVIGOR_PATH=$(find "$HOME/Library/OpenHarmony/Sdk" -name "hvigor" -type f 2>/dev/null | head -1)
+    if [ -n "$HVIGOR_PATH" ]; then
+        exec "$HVIGOR_PATH" "$@"
+    fi
+elif [ -d "$HOME/Library/Huawei/Sdk" ]; then
+    # 尝试使用 HarmonyOS SDK 中的 hvigor
+    HVIGOR_PATH=$(find "$HOME/Library/Huawei/Sdk" -name "hvigor" -type f 2>/dev/null | head -1)
+    if [ -n "$HVIGOR_PATH" ]; then
+        exec "$HVIGOR_PATH" "$@"
+    fi
 else
     echo "❌ 错误: 未找到 hvigor 工具"
-    echo "请安装 hvigor:"
-    echo "  npm install -g @ohos/hvigor-ohos-plugin"
-    echo "或使用 DevEco Studio 构建项目"
+    echo ""
+    echo "hvigor 工具通常随 DevEco Studio 或 HarmonyOS SDK 一起安装。"
+    echo ""
+    echo "解决方案："
+    echo "1. 使用 DevEco Studio 打开项目并构建（推荐）"
+    echo "   下载地址: https://developer.harmonyos.com/cn/develop/deveco-studio"
+    echo ""
+    echo "2. 或者，如果项目已有构建产物，可以直接使用安装任务："
+    echo "   - 运行 '安装 HAP 包（默认设备）' 任务"
+    echo ""
+    echo "3. 如果需要重新构建，请在 DevEco Studio 中打开项目"
     exit 1
 fi
 

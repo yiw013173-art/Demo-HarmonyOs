@@ -48,20 +48,19 @@
 
 ### 方式二：重新构建
 
-如果需要重新构建项目，需要先安装 hvigor：
+如果需要重新构建项目，请使用 **DevEco Studio**：
 
-```bash
-npm install -g @ohos/hvigor-ohos-plugin
-```
+1. 下载并安装 DevEco Studio
+   - 下载地址: https://developer.harmonyos.com/cn/develop/deveco-studio
+2. 在 DevEco Studio 中打开项目
+3. 使用 DevEco Studio 的构建功能
 
-然后：
-1. 按 `Cmd+Shift+B` 构建项目
-2. 或运行 "构建 Debug 包" 任务
+**注意**：hvigor 工具随 DevEco Studio 一起安装，不需要单独通过 npm 安装。
 
 ## ⚠️ 注意事项
 
-1. **hdc 命令**：已配置完成，所有任务会自动加载环境变量
-2. **hvigor 工具**：如果需要构建，需要安装 `@ohos/hvigor-ohos-plugin`
+1. **hdc 命令**：已配置完成，可以直接使用
+2. **hvigor 工具**：随 DevEco Studio 一起安装，不需要单独安装。如果未安装 DevEco Studio，请使用 DevEco Studio 构建项目
 3. **ohpm 工具**：如果需要安装依赖，需要配置 ohpm 环境变量
 4. **设备连接**：确保设备已连接或模拟器已启动
 
